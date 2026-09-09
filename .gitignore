@@ -1,0 +1,13 @@
+# GEO raw data
+data/GSE256292/
+data/raw_data/
+
+# Compressed/raw files
+*.tar
+*.tar.gz
+*.gz
+
+# R temporary files
+*.Rhistory
+*.RData
+*.Rproj.user/

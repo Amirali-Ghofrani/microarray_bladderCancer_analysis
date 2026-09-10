@@ -35,6 +35,36 @@ sum(data <= 40)
 
 
 
+### Data normalization
+
+# RMA:
+# The RMA function normalizes the data and transforms the data
+# to log2 values.
+
+norm_data_with_rma <- affy::rma(my_cel_files)
+
+rma_df <- exprs(norm_data_with_rma)
+
+head(rma_df, 10)
+
+hist(rma_df)
+boxplot(rma_df)
+
+
+# Note:
+# RMA also removes control probes and retains the probes
+# associated with the measured genes.
+
+dim(rma_df)
+
+
+# Using normalized RMA data as the final data
+final_data <- rma_df
+
+
+
+
+
 
 
 

@@ -1,6 +1,7 @@
 # GEO raw data
 data/GSE256292/
 data/raw_data/
+data/annotation_GPL15207-17536.csv
 
 # Compressed/raw files
 *.tar

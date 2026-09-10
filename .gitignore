@@ -11,3 +11,5 @@ data/raw_data/
 *.Rhistory
 *.RData
 *.Rproj.user/
+.RDataTmp
+*.RDataTmp

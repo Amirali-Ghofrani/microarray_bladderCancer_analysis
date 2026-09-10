@@ -115,9 +115,19 @@ Result <- topTable(
 )
 
 
+### Identifying the top 100 genes from the results
+# These genes will be used for further plotting.
 
+rownames(Result)[1:100]
 
+# Extract the expression data for the top 100 genes.
+top_genes <- limma_data[rownames(Result)[1:100], ]
 
+# Save the top 100 genes as a CSV file.
+write.csv(
+  top_genes,
+  file.path(data_dir, "top_genes.csv")
+)
 
 
 

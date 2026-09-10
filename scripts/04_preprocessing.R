@@ -101,3 +101,13 @@ nrow(final_data)
 row.names(final_data) <- symbol
 
 head(final_data)
+
+
+# saving final_data to be loaded in the next script file:
+write.csv(
+  final_data,
+  file.path(data_dir, "final_data.csv"),
+  row.names = TRUE
+)
+
+

@@ -295,3 +295,124 @@ This file is used as the input for the subsequent differential expression analys
 ### Important Note
 
 The filtering commands in this script are included as practical examples for learning data preprocessing. They should not be interpreted as the definitive filtering criteria for this dataset.
+
+## 05. Differential Expression Analysis with limma
+
+### Overview
+
+This script prepares the normalized and annotated microarray expression data for differential expression analysis and performs the analysis using the Bioconductor `limma` package.
+
+The analysis compares gene expression between:
+
+- **Normal T24 cells**
+
+- **T24 cells treated with MAP30**
+
+### Input
+
+The script uses the normalized and annotated expression matrix generated in the previous step:
+
+```         
+data/final_data.csv 
+```
+
+### Data Preparation
+
+Before differential expression analysis, the script performs several preprocessing steps:
+
+1.  Loads the normalized expression data.
+
+2.  Removes rows without valid gene symbols, represented by `Null` or `---`.
+
+3.  Identifies genes that occur more than once.
+
+4.  Aggregates duplicated gene symbols by calculating the mean expression value across duplicated rows.
+
+5.  Saves the resulting data matrix as:
+
+```         
+data/data_unique.csv 
+```
+
+The first column contains the unique gene symbols, while the remaining columns contain the expression values for the six samples.
+
+### Experimental Design
+
+The six samples are divided into two groups:
+
+| Group                   | Number of samples |
+|-------------------------|-------------------|
+| Normal T24 cells        | 3                 |
+| MAP30-treated T24 cells | 3                 |
+
+A design matrix without an intercept is created so that each experimental group has its own coefficient.
+
+### Differential Expression Analysis
+
+The differential expression analysis is performed using `limma`.
+
+The main steps are:
+
+1.  Fit a linear model using `lmFit()`.
+
+2.  Define the comparison between the Normal and Treated groups using `makeContrasts()`.
+
+3.  Apply the contrast using `contrasts.fit()`.
+
+4.  Apply empirical Bayes moderation using `eBayes()`.
+
+5.  Generate the differential expression results using `topTable()`.
+
+### Contrast Interpretation
+
+The specified contrast is:
+
+```         
+Normal - Treated 
+```
+
+Therefore:
+
+- **Positive logFC:** higher expression in Normal T24 cells.
+
+- **Negative logFC:** higher expression in MAP30-treated T24 cells.
+
+### Multiple Testing Correction
+
+The results are adjusted for multiple testing using the **false discovery rate (FDR)** method.
+
+The complete differential expression results are saved as:
+
+```         
+data/results.csv 
+```
+
+### Top 100 Genes
+
+The first 100 genes from the differential expression results are selected for downstream visualization.
+
+Their expression values are extracted from the normalized expression matrix and saved as:
+
+```         
+data/top_genes.csv 
+```
+
+These genes are subsequently used for visualization, including heatmap analysis.
+
+### Output Files
+
+This script generates the following files:
+
+```         
+data/ ├── data_unique.csv ├── results.csv └── top_genes.csv 
+```
+
+- `data_unique.csv` — expression matrix with duplicated gene symbols aggregated.
+
+- `results.csv` — complete limma differential expression results.
+
+- `top_genes.csv` — expression values for the top 100 genes selected from the limma results.
+
+### Next Step
+
+The generated results and top genes are used in the subsequent visualization steps, including volcano plots, PCA, heatmaps, and sample correlation analysis.

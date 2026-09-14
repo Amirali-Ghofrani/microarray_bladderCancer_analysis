@@ -188,6 +188,110 @@ The histogram provides an overview of the distribution of raw expression intensi
 
 This script primarily produces quality-control plots for visual inspection.
 
-The QC plots are displayed during script execution. Final figures selected for the project can be saved to the project's `figures/` directory during the visualization stage.
+## 04. Data Preprocessing, Normalization, and Gene Annotation
 
-### 
+### Overview
+
+This script demonstrates the main preprocessing steps applied to the Affymetrix microarray data before differential expression analysis.
+
+The workflow includes inspection of raw expression values, basic filtering examples, RMA normalization, gene annotation, and preparation of the final expression matrix for downstream analysis.
+
+### Input
+
+The script uses:
+
+- Raw Affymetrix CEL files from:
+
+```         
+data/raw_data/ 
+```
+
+- The platform annotation file:
+
+```         
+data/annotation_GPL15207-17536.csv 
+```
+
+- Note: The platform annotation file can be downloaded from the corresponding GSM page on the NCBI Gene Expression Omnibus (GEO) database.
+
+### Workflow
+
+The script performs the following steps:
+
+1.  Defines the project and raw data directories.
+
+2.  Reads the Affymetrix CEL files using `ReadAffy()`.
+
+3.  Extracts the raw probe-level expression matrix.
+
+4.  Inspects the distribution of raw expression values using histograms.
+
+5.  Demonstrates basic expression-based filtering.
+
+6.  Counts zero and low-intensity expression values.
+
+7.  Performs RMA normalization.
+
+8.  Inspects the normalized expression matrix using histograms and boxplots.
+
+9.  Loads the platform annotation file.
+
+10. Matches the normalized expression data with gene annotation information.
+
+11. Extracts gene symbols from the annotation file.
+
+12. Assigns gene symbols as row names of the normalized expression matrix.
+
+13. Saves the resulting expression matrix for use in downstream analysis.
+
+### Expression Filtering
+
+Basic filtering examples are included to demonstrate how expression values can be used to select rows from an expression matrix.
+
+These filtering operations are **practical examples** rather than the final filtering strategy used for the differential expression analysis.
+
+### RMA Normalization
+
+Robust Multi-array Average (RMA) normalization is applied using the `affy` package.
+
+RMA performs:
+
+- Background correction
+
+- Quantile normalization
+
+- Probe-level summarization
+
+The resulting expression values are on a log2 scale.
+
+The normalized expression matrix is stored in:
+
+```         
+final_data 
+```
+
+### Gene Annotation
+
+The platform annotation file is used to associate the probe identifiers in the normalized expression matrix with gene symbols.
+
+Gene symbols are assigned as the row names of the final expression matrix.
+
+Rows without a corresponding gene symbol are assigned the value:
+
+```         
+Null 
+```
+
+### Output
+
+The final normalized and annotated expression matrix is saved as:
+
+```         
+data/final_data.csv 
+```
+
+This file is used as the input for the subsequent differential expression analysis.
+
+### Important Note
+
+The filtering commands in this script are included as practical examples for learning data preprocessing. They should not be interpreted as the definitive filtering criteria for this dataset.

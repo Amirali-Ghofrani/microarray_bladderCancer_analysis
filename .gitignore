@@ -15,5 +15,5 @@ data/results.csv
 *.Rhistory
 *.RData
 *.Rproj.user/
-.RDataTmp
-*.RDataTmp
+*.RDataTmp*
+s

@@ -500,3 +500,85 @@ figures/enhanced_volcano.png
 ```
 
 ### 
+
+## 07. Principal Component Analysis (PCA)
+
+### Overview
+
+This script performs principal component analysis (PCA) on the expression data from the six samples in the GSE256292 dataset.
+
+PCA is an unsupervised dimensionality reduction method that summarizes the major sources of variation in high-dimensional gene expression data.
+
+In this analysis, PCA is used to explore the overall expression patterns of Normal T24 cells and T24 cells treated with MAP30.
+
+### Input
+
+The script uses the raw Affymetrix CEL files stored in:
+
+```         
+data/raw_data/
+```
+
+The CEL files are read using the `affy` package, and the expression matrix is extracted from the Affymetrix data.
+
+The six samples are divided into two experimental groups:
+
+- **Normal T24 cells** — 3 samples
+- **T24 cells treated with MAP30** — 3 samples
+
+### Workflow
+
+The script performs the following steps:
+
+1.  Loads the `affy` and `ggplot2` packages.
+2.  Reads the raw Affymetrix CEL files using `ReadAffy()`.
+3.  Extracts the expression matrix using `exprs()`.
+4.  Defines the experimental groups for the six samples.
+5.  Creates a metadata data frame containing sample names and group assignments.
+6.  Applies a log2 transformation to the expression data.
+7.  Performs principal component analysis using `prcomp()`.
+8.  Extracts the first three principal components and combines them with the sample group information.
+9.  Generates a scatter plot using PC1 and PC2.
+10. Saves the resulting PCA plot as a PNG file.
+
+### Data Transformation
+
+Before performing PCA, the expression data are transformed using:
+
+```         
+log2(data + 1)
+```
+
+The log2 transformation reduces the influence of very large expression values and makes the expression data more suitable for exploratory analysis.
+
+### PCA Settings
+
+The PCA is performed using the `prcomp()` function.
+
+The first three principal components are extracted for inspection, while the first two components are used for visualization.
+
+The PCA plot uses:
+
+- **X-axis:** PC1
+- **Y-axis:** PC2
+- **Color:** Experimental group
+
+### Interpretation
+
+PCA provides an exploratory view of the overall similarities and differences between samples based on their gene expression profiles.
+
+Samples located close to each other in the PCA plot have more similar overall expression patterns, whereas samples located farther apart have more distinct expression profiles.
+
+Separation between the Normal and MAP30-treated samples may indicate that MAP30 treatment is associated with substantial changes in the overall gene expression profile.
+
+The PCA analysis is an exploratory method and does not identify individual differentially expressed genes.
+
+### Output
+
+The generated PCA plot is saved to:
+
+```         
+figures/PCA_plot.png
+```
+
+### 

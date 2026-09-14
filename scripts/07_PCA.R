@@ -77,6 +77,4 @@ pca_plot
 # Save the PCA plot as a PNG file.
 ggsave(file.path(figures_dir,"PCA_plot.png"),
        plot = pca_plot,
-       width = 9,
-       height = 10
 )

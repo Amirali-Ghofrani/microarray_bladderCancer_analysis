@@ -654,3 +654,84 @@ figures/Heatmap for Top 100 Genes.png
 The heatmap provides a gene-level visualization of the differential expression results.
 
 A sample correlation heatmap is used in the next step to assess the overall similarity between samples based on their gene expression profiles.
+
+## 09. Sample Correlation Heatmap
+
+### Overview
+
+This script generates a sample correlation heatmap to assess the similarity between the six samples based on their gene expression profiles.
+
+Correlation analysis provides an additional quality-control and exploratory assessment of the expression data by showing how strongly the expression profiles of individual samples are correlated with each other.
+
+### Input
+
+The script uses the processed expression matrix generated in the previous steps:
+
+```         
+data/data_unique.csv
+```
+
+The input file contains the unique gene symbols and their corresponding expression values across the six samples.
+
+### Workflow
+
+The script performs the following steps:
+
+1.  Loads the `pheatmap` and `gplots` packages.
+2.  Loads the processed expression data.
+3.  Sets gene names as row names.
+4.  Removes the column containing gene names from the expression matrix.
+5.  Calculates pairwise correlations between all six samples using the `cor()` function.
+6.  Generates a heatmap of the resulting correlation matrix using `pheatmap()`.
+7.  Applies the `redgreen` color palette to visualize the correlation values.
+8.  Saves the resulting correlation heatmap as a PNG file.
+
+### Correlation Analysis
+
+Pairwise correlations are calculated using:
+
+```         
+cor(data)
+```
+
+Because genes are represented by rows and samples by columns, the resulting correlation matrix describes the similarity between the expression profiles of the samples.
+
+Higher correlation values indicate more similar gene expression profiles, whereas lower correlation values indicate greater differences between samples.
+
+### Heatmap Settings
+
+The correlation heatmap uses the following settings:
+
+- **Correlation method:** Default method of `cor()`
+- **Color palette:** `redgreen(256)`
+- **Cell width:** 160
+- **Cell height:** 160
+- **Font size:** 17
+- **Main title:** GSM RMA Correlations
+
+### Interpretation
+
+Samples with high pairwise correlation have similar overall gene expression profiles.
+
+A strong correlation between biological replicates may indicate good consistency within an experimental group, whereas substantially lower correlations may indicate biological differences or potential technical variation.
+
+The correlation heatmap can therefore be used together with other quality-control and exploratory visualizations, such as PCA and the gene expression heatmap, to evaluate sample relationships.
+
+Correlation analysis describes the similarity between expression profiles and does not by itself establish a biological or causal relationship between samples.
+
+### Output
+
+The generated correlation heatmap is saved to:
+
+```         
+figures/Correlation_Heatmap.png
+```
+
+### Main Packages
+
+- `pheatmap` — generating the correlation heatmap
+- `gplots` — providing the `redgreen()` color palette
+
+## Summary
+
+Together, these scripts provide a reproducible workflow for Affymetrix microarray data processing, differential expression analysis, quality assessment, and visualization.

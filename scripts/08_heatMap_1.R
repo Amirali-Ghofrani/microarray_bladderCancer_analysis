@@ -46,7 +46,7 @@ heat_plot_1 <- pheatmap(
 
 # Save the heatmap as a PNG file.
 png(
-  file.path(figures_dir, "03_Heatmap for Top 100 Genes.png"),
+  file.path(figures_dir, "Heatmap for Top 100 Genes.png"),
   width = 1500,
   height = 1500
 )

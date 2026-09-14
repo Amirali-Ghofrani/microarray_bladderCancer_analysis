@@ -32,6 +32,12 @@ data_unique <- aggregate(
   FUN = mean
 )
 
+# Save the data in data directory for further use:
+write.csv(
+  data_unique,
+  file.path(data_dir, "data_unique.csv"),
+  row.names = FALSE
+)
 
 # Apply gene names as row names and remove the first column
 # containing gene names for the final limma analysis.

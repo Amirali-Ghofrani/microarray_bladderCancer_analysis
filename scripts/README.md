@@ -581,4 +581,76 @@ The generated PCA plot is saved to:
 figures/PCA_plot.png
 ```
 
-### 
+## 08. Heatmap
+
+### Overview
+
+This script generates a heatmap of the top 100 genes identified from the differential expression analysis.
+
+A heatmap provides a visual representation of gene expression patterns across samples and can be used to identify groups of genes with similar expression patterns and similarities between samples.
+
+### Input
+
+The script uses the expression data for the top 100 genes generated in the differential expression analysis:
+
+```         
+data/top_genes.csv
+```
+
+The input file contains gene names together with their corresponding expression values across the six samples.
+
+### Workflow
+
+The script performs the following steps:
+
+1.  Loads the `pheatmap` package.
+2.  Checks whether the `gplots` package is installed and installs it if necessary.
+3.  Loads the `gplots` package to access the `greenred()` color palette.
+4.  Loads the expression data for the top 100 genes.
+5.  Sets the gene names as row names.
+6.  Removes the column containing gene names from the expression matrix.
+7.  Generates a heatmap using the `pheatmap()` function.
+8.  Applies the `greenred` color palette to visualize differences in expression levels.
+9.  Saves the resulting heatmap as a PNG file.
+
+### Heatmap Settings
+
+The heatmap uses the following settings:
+
+- **Number of genes:** Top 100 genes
+- **Color palette:** `greenred(256)`
+- **Cell width:** 160
+- **Cell height:** 12
+- **Column label angle:** 45 degrees
+- **Row font size:** 12
+- **Column font size:** 15
+- **Main title:** Top Genes
+
+### Interpretation
+
+The heatmap displays the expression levels of the top 100 genes across the six samples.
+
+Similar expression patterns across samples may indicate that samples share similar transcriptional profiles, while distinct patterns may reflect differences between the experimental groups.
+
+The heatmap can also help visualize whether genes identified as important in the differential expression analysis show consistent expression patterns across the samples.
+
+The heatmap is primarily used as a visualization and exploratory analysis tool and does not perform an independent statistical test for differential expression.
+
+### Output
+
+The generated heatmap is saved to:
+
+```         
+figures/Heatmap for Top 100 Genes.png
+```
+
+### Main Packages
+
+- `pheatmap` — generating the heatmap
+- `gplots` — providing the `greenred()` color palette
+
+### Next Step
+
+The heatmap provides a gene-level visualization of the differential expression results.
+
+A sample correlation heatmap is used in the next step to assess the overall similarity between samples based on their gene expression profiles.

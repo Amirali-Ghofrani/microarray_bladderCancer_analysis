@@ -108,4 +108,86 @@ data/raw_data/
 
 These files are used in the subsequent preprocessing and quality-control steps of the analysis.
 
+## 03. Affymetrix Raw Data Processing and Quality Control
+
+### Overview
+
+This script reads the raw Affymetrix CEL files from the GSE256292 dataset and performs initial quality-control analyses before normalization.
+
+The script uses the `affy` Bioconductor package to import the CEL files and inspect their probe-level expression data.
+
+### Requirements
+
+The script requires:
+
+- R
+
+- Bioconductor
+
+- `affy`
+
+- `BiocManager`
+
+The required packages are installed and loaded at the beginning of the script.
+
+### Input
+
+The script reads the raw Affymetrix CEL files stored in:
+
+```         
+data/raw_data/ 
+```
+
+These files were extracted from the GEO supplementary data archive in the previous step.
+
+### Workflow
+
+The script performs the following steps:
+
+1.  Installs and loads the required Bioconductor packages.
+
+2.  Defines the project and raw data directories.
+
+3.  Reads the Affymetrix CEL files using `ReadAffy()`.
+
+4.  Extracts the raw probe-level expression matrix using `exprs()`.
+
+5.  Inspects the raw expression values.
+
+6.  Visualizes the spatial distribution of the first array.
+
+7.  Assesses RNA degradation across the arrays using `AffyRNAdeg()`.
+
+8.  Generates RNA degradation plots.
+
+9.  Generates boxplots to examine expression distributions before normalization.
+
+10. Generates a histogram of the raw expression intensity distribution.
+
+### Quality Control
+
+Several complementary quality-control approaches are used:
+
+#### Array Image
+
+The spatial image of the first array is examined to identify potential spatial artifacts or technical abnormalities.
+
+#### RNA Degradation
+
+`AffyRNAdeg()` is used to assess RNA degradation across the arrays by examining the relationship between probe position and signal intensity.
+
+#### Boxplots
+
+Boxplots are used to compare the distribution of probe-level expression values across arrays before normalization.
+
+#### Histogram
+
+The histogram provides an overview of the distribution of raw expression intensities.
+
+### Output
+
+This script primarily produces quality-control plots for visual inspection.
+
+The QC plots are displayed during script execution. Final figures selected for the project can be saved to the project's `figures/` directory during the visualization stage.
+
 ### 

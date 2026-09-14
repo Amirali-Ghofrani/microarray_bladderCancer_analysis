@@ -416,3 +416,87 @@ data/ ├── data_unique.csv ├── results.csv └── top_genes.csv
 ### Next Step
 
 The generated results and top genes are used in the subsequent visualization steps, including volcano plots, PCA, heatmaps, and sample correlation analysis.
+
+## 06. Volcano Plot
+
+### Overview
+
+This script generates a volcano plot from the differential expression results obtained using `limma`.
+
+A volcano plot provides a visual representation of both the magnitude and statistical significance of differential gene expression.
+
+### Input
+
+The script uses the complete differential expression results generated in the previous step:
+
+```         
+data/results.csv 
+```
+
+The main variables used for the plot are:
+
+- **log2FoldChange** — magnitude and direction of differential expression.
+
+- **adj.P.Val** — FDR-adjusted p-value.
+
+### Workflow
+
+The script performs the following steps:
+
+1.  Installs and loads the `EnhancedVolcano` package.
+
+2.  Loads the differential expression results.
+
+3.  Renames the relevant columns for compatibility with `EnhancedVolcano`.
+
+4.  Generates the volcano plot using log2 fold change and adjusted p-values.
+
+5.  Applies statistical and fold-change cutoffs.
+
+6.  Saves the resulting figure as a PNG file.
+
+### Plot Settings
+
+The volcano plot uses:
+
+- **Adjusted p-value cutoff:** 0.05
+
+- **Fold-change cutoff:** 2
+
+- **Point size:** 1.0
+
+- **Label size:** 6.0
+
+The `FCcutoff = 2` setting corresponds to a **2-fold change**, which is equivalent to an absolute log2 fold change of 1.
+
+### Interpretation
+
+The volcano plot displays:
+
+- **X-axis:** log2 fold change
+
+- **Y-axis:** statistical significance based on the adjusted p-value
+
+Genes with larger absolute log2 fold changes show greater differences in expression between the two groups, while genes with smaller adjusted p-values have stronger statistical evidence for differential expression.
+
+For this analysis, the contrast is:
+
+```         
+Normal - Treated 
+```
+
+Therefore:
+
+- Positive log2FC indicates higher expression in Normal T24 cells.
+
+- Negative log2FC indicates higher expression in MAP30-treated T24 cells.
+
+### Output
+
+The generated volcano plot is saved to:
+
+```         
+figures/enhanced_volcano.png 
+```
+
+### 

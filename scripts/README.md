@@ -69,3 +69,43 @@ The exact files depend on the supplementary files available for GSE256292 at the
 This script retrieves the data directly from the NCBI GEO database using the GEO accession number `GSE256292`.
 
 Running the script again may download or overwrite files depending on the behavior of `GEOquery` and the existing contents of the data directory.
+
+## 02. Extract GSE256292 Raw Data
+
+### Overview
+
+This script extracts the raw data files from the `GSE256292_RAW.tar` archive downloaded in the previous step.
+
+The extracted files are stored in the project's `data/raw_data/` directory and are used for the downstream microarray analysis.
+
+### Input
+
+The script uses the following archive:
+
+``` text
+data/GSE256292/GSE256292_RAW.tar
+```
+
+This archive contains the raw microarray data associated with the GSE256292 dataset.
+
+### Workflow
+
+The script performs the following steps:
+
+1.  Defines the project and dataset directories.
+2.  Defines the directory for the extracted raw data.
+3.  Creates the `data/raw_data/` directory if it does not already exist.
+4.  Extracts the `GSE256292_RAW.tar` archive using `untar()`.
+5.  Lists the extracted files to confirm successful extraction.
+
+### Output
+
+The extracted raw files are stored in:
+
+``` text
+data/raw_data/
+```
+
+These files are used in the subsequent preprocessing and quality-control steps of the analysis.
+
+### 

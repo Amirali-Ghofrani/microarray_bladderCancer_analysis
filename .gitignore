@@ -4,6 +4,7 @@ data/raw_data/
 data/annotation_GPL15207-17536.csv
 data/final_data.csv
 data/top_genes.csv
+data/results.csv
 
 # Compressed/raw files
 *.tar

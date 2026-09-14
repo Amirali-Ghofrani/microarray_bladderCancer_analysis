@@ -113,7 +113,7 @@ Result <- topTable(
   sort.by = "B",
   number = Inf
 )
-
+write.csv(Result, file.path(data_dir, "results.csv"))
 
 ### Identifying the top 100 genes from the results
 # These genes will be used for further plotting.

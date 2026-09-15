@@ -384,7 +384,7 @@ The results are adjusted for multiple testing using the **false discovery rate (
 The complete differential expression results are saved as:
 
 ```         
-data/results.csv 
+results/results.csv 
 ```
 
 ### Top 100 Genes
@@ -394,7 +394,7 @@ The first 100 genes from the differential expression results are selected for do
 Their expression values are extracted from the normalized expression matrix and saved as:
 
 ```         
-data/top_genes.csv 
+results/top_genes.csv 
 ```
 
 These genes are subsequently used for visualization, including heatmap analysis.
@@ -430,7 +430,7 @@ A volcano plot provides a visual representation of both the magnitude and statis
 The script uses the complete differential expression results generated in the previous step:
 
 ```         
-data/results.csv 
+results/results.csv 
 ```
 
 The main variables used for the plot are:
@@ -594,7 +594,7 @@ A heatmap provides a visual representation of gene expression patterns across sa
 The script uses the expression data for the top 100 genes generated in the differential expression analysis:
 
 ```         
-data/top_genes.csv
+results/top_genes.csv
 ```
 
 The input file contains gene names together with their corresponding expression values across the six samples.

@@ -3,6 +3,10 @@ prj_dir <- dirname(getwd())
 data_dir <- file.path(prj_dir, "data")
 figures_dir <- file.path(prj_dir, "figures")
 
+results_dir <- file.path(
+  prj_dir,"results"
+)
+
 
 ### Heatmap:
 
@@ -20,7 +24,7 @@ library(gplots)
 
 # Load the expression data for the top 100 genes.
 data <- read.csv(
-  file.path(data_dir, "top_genes.csv")
+  file.path(results_dir, "top_genes.csv")
 )
 
 # Set gene names as row names.

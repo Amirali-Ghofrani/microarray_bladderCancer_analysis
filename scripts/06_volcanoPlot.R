@@ -3,6 +3,11 @@ prj_dir <- dirname(getwd())
 data_dir <- file.path(prj_dir, "data")
 figures_dir <- file.path(prj_dir, "figures")
 
+results_dir <- file.path(
+  prj_dir,"results"
+)
+
+
 
 ### Volcano plot:
 
@@ -14,7 +19,7 @@ library(EnhancedVolcano)
 # Volcano plots are created using the differential expression
 # results, particularly log2 fold change and adjusted p-values.
 data <- read.csv(
-  file.path(data_dir, "results.csv")
+  file.path(results_dir, "results.csv")
 )
 
 # Rename the first two columns for easier use.

@@ -1,6 +1,9 @@
 
 prj_dir <- dirname(getwd())
 data_dir <- file.path(prj_dir, "data")
+results_dir <- file.path(
+  prj_dir,"results"
+)
 
 data <- read.csv(
   file.path(data_dir, "final_data.csv"),
@@ -119,7 +122,7 @@ Result <- topTable(
   sort.by = "B",
   number = Inf
 )
-write.csv(Result, file.path(data_dir, "results.csv"))
+write.csv(Result, file.path(results_dir, "results.csv"))
 
 ### Identifying the top 100 genes from the results
 # These genes will be used for further plotting.
@@ -132,7 +135,7 @@ top_genes <- limma_data[rownames(Result)[1:100], ]
 # Save the top 100 genes as a CSV file.
 write.csv(
   top_genes,
-  file.path(data_dir, "top_genes.csv")
+  file.path(results_dir, "top_genes.csv")
 )
 
 

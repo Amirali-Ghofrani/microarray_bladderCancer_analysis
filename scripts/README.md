@@ -32,7 +32,16 @@ The script automatically checks whether `BiocManager` and `GEOquery` are install
 
 The project is organized as follows:
 
-microarray-bladder-cancer-analysis/ ├── data/ │ └── GSE256292/ ├── scripts/ ├── figures/ ├── results/ ├── README.md └── .gitignore
+``` text
+microarray-bladder-cancer-analysis/
+├── data/
+│   └── GSE256292/
+├── scripts/
+├── figures/
+├── results/
+├── README.md
+└── .gitignore
+```
 
 The `data/GSE256292/` directory is created automatically if it does not already exist.
 
@@ -403,8 +412,13 @@ These genes are subsequently used for visualization, including heatmap analysis.
 
 This script generates the following files:
 
-```         
-data/ ├── data_unique.csv ├── results.csv └── top_genes.csv 
+``` text
+data/
+└── data_unique.csv
+
+results/
+├── results.csv
+└── top_genes.csv
 ```
 
 - `data_unique.csv` — expression matrix with duplicated gene symbols aggregated.

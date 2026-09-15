@@ -37,6 +37,11 @@ cel_files_dir <- file.path(
 )
 
 
+# Define the directory containing the figures.
+figures_dir <- file.path(
+  project_dir, "figures"
+  )
+
 # ------------------------------------------------------------
 # 3. Read Affymetrix CEL files
 # ------------------------------------------------------------
@@ -105,10 +110,24 @@ boxplot(
 # Boxplot using the AffyBatch object.
 # This provides an overview of the array-level expression
 # distributions.
+
+png(
+  file.path(figures_dir, "Boxplot_Affymetrix_Expression.png"),
+  width = 1500,
+  height = 1500
+)
+
 boxplot(
   my_cel_files,
-  main = "Affymetrix Array Expression"
+  main = "Affymetrix Array Expression",
+  names = c("Normal 1", "Normal 2", "Normal 3",
+            "MAP30 1", "MAP30 2", "MAP30 3"),
+  cex.main = 2,
+  cex.axis = 1.5,
+  cex.lab = 1.5
 )
+
+dev.off()
 
 
 # ------------------------------------------------------------

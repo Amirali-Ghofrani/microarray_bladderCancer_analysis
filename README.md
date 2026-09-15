@@ -59,12 +59,12 @@ The main analyses include:
 - RMA normalization
 - Probe-to-gene annotation
 - Removal of duplicated gene symbols
+- Boxplot visualization of array expression
 - Differential expression analysis using `limma`
 - Volcano plot
 - Principal Component Analysis (PCA)
 - Gene expression heatmap
 - Sample correlation heatmap
-- Boxplot visualization of array expression
 
 ------------------------------------------------------------------------
 
@@ -147,7 +147,7 @@ Users interested in reproducing or extending the analysis are encouraged to foll
 
 I would like to sincerely thank **Dr. Ehsan Keramati** for his fantastic course on microarray analysis and for generously sharing his knowledge and experience in this field. His course was an important part of my learning process while working on this project.
 
-Educational content by Dr. Ehsan Keramati (mostly in Persian language):
+Educational content by Dr. Ehsan Keramati (Mostly in Persian language):
 
 **EKgenetics:** [https://www.youtube.com/\@EKgenetics](https://www.youtube.com/@EKgenetics){.uri}
 
